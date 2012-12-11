@@ -84,8 +84,15 @@ namespace Weighed_Grade_Calculator
             }
             MessageBox.Show("Total Grade: "+(totalG/(100-finalP))*100, "Test", MessageBoxButtons.OK, MessageBoxIcon.Question);
             needOnF = (gradeWanted - totalG) / (finalP / 100);
-            MessageBox.Show("You need a " + needOnF + " to get a " + gradeWanted, "Needed on Final", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            if (needOnF > 100)
+            {
+                totalG += finalP;
+                MessageBox.Show("You cannot get " + gradeWanted + " as you would need to get over 100% \n The highest grade you can get in the class is " + totalG,"No grade", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+            }
+            else
+            {
+                MessageBox.Show("You need a " + needOnF + " to get a " + gradeWanted, "Needed on Final", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
